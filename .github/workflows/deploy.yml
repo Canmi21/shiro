@@ -1,6 +1,7 @@
 name: Build and Deploy
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -62,7 +63,6 @@ jobs:
           echo "Current Git Hash: $current_hash"
           if [ "$file_hash" == "$current_hash" ]; then
             echo "Hashes match. Stopping workflow."
-            echo "canceled=true" >> $GITHUB_OUTPUT
           else
             echo "Hashes do not match. Continuing workflow."
           fi
